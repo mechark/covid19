@@ -1,0 +1,24 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'covid/style.css' %}" />
+
+    <html>
+    <head>
+        <title>Covid19</title>
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+
+
+
+
+
+    </head>
+    <body>
+    {% block content %}
+    <div class="confirmed">
+    </div>
+    <h1 class="tot">Total Confirmed</h1>
+    <h2>{{convert}}</h2>
+    {% endblock content %}
+    </body>
+    </html>
