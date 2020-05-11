@@ -6,13 +6,11 @@ from bs4 import BeautifulSoup
 
 
 def covid(request):
-    covid19 = 'https://www.trackcorona.live/'
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36'}
-    full_page = requests.get(covid19, headers=headers)
-    print(full_page.content)
-
-    soup = BeautifulSoup(full_page.content, 'html.parser')
-    convert = soup.findAll('a', {'id': 'valueTot'})
-    context = {'convert':convert[0].text}
+    url = 'https://www.worldometers.info/coronavirus/'
+    page = requests.get(url)
+    soup = BeautifulSoup(page.text, 'html.parser')
+    finall = soup.find('div', class_="maincounter-number").text
+    context = {
+        'finall':finall
+    }
     return render(request,'covid/covid.html', context)
